@@ -4,7 +4,6 @@ tags:
   - pwn/technique
   - pwn/file-structs
 ---
-
 # Description
 Overwriting the standard file descriptor of `_IO_2_1_stdout_` allows the attacker to gain an **arbitrary write**.
 # Notes
@@ -33,3 +32,5 @@ Overwriting the standard file descriptor of `_IO_2_1_stdout_` allows the attacke
     - $stack: `libc.sym.environ`, located at end of anon section after libc
     - $libc: libc addresses in `fp`
     - $elf: elf addresses before `fp`
+# Challenges
+- PwnMe Quals CTF 2025 / pwn / einstein
