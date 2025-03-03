@@ -5,8 +5,8 @@ tags:
   - pwn/file-structs
 ---
 # Description
+Using the `chain` and `vtable` attributes of an `_IO_FILE` struct to write a "*[[ROP]]* chain" by chaining file structs. It is typically triggered by a call to `exit()`, which cleans up all open file descriptors.
 > [!todo]
-
 # Notes
 ```py  
 # Author: Axura  
