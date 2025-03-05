@@ -32,7 +32,10 @@ It contains data that **is** initialized at the beginning of the program and is 
 ## .got.plt
 [[GOT|Global Offset Table]].
 ## .dynamic
-> [!todo]
+It is a list of structs of type `Elf32_Dyn`/`Elf64_Dyn`. This struct contains two fields: `d_tag`, which identifies the type of the entry, and `d_un`, which typically is the address of a section or library that must be loaded/resolved at runtime. Essentially, it just enables dynamic linking functionality. Crucially, it typically contains the address of the `.init` and `.fini` sections, which may be overwritten through [[dynamic overwrite|this attack]]. The below image illustrates an example `.dynamic` section.
+
+![[dynamic-section.png]] [3]
 # References
 1. [ELF: From The Programmer's Perspective](https://ftp.math.utah.edu/u/ma/hohn/linux/misc/elf/elf.html) (somewhat old)
 2. [ELF Format Cheatsheet](https://gist.github.com/x0nu11byt3/bcb35c3de461e5fb66173071a2379779)
+3. https://blog.k3170makan.com/2018/11/introduction-to-elf-format-part-vii.html
