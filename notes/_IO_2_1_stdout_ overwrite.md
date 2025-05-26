@@ -7,7 +7,7 @@ tags:
 # Description
 Overwriting the standard file descriptor of `_IO_2_1_stdout_` allows the attacker to gain an **arbitrary write**.
 # Notes
-- `_IO_2_1_stoudt_` is located in the anon section after libc
+- `_IO_2_1_stdout_` is located in the anon section after [[LIBC]]
 - `fp.read_base`, `fp.read_ptr`, etc. are all set to the same value (except `fp.buf_end`)
 ### Requirements
 - I/O operation (some function that writes to stdout, i.e. `puts`, guarantees this struct is used)

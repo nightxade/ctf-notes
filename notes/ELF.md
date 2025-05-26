@@ -20,7 +20,7 @@ This section holds executable instructions that contribute to the process termin
 ### Info
 - It contains only a function call to `__do_global_dtors_aux`, which goes through [[#.finiarray|.fini_array]] from the tail and calls each constructor function on the list. [1,2]
 ## .fini_array (old: .dtors)
-Contains an array of pointers to functions to use as destructors. [2]
+Contains an array of pointers to functions to use as destructors. Can be attacked via [[dtors fini_array overwrite|a .dtors/.fini_array overwrite]] [2]
 ## .bss
 It contains data that **is not** initialized at the beginning of the program, i.e. filled with null bytes, and is **writeable**.
 ## .data
