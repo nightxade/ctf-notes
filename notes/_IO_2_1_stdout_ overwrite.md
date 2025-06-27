@@ -1,11 +1,10 @@
 ---
 tags:
-  - pwn
   - pwn/technique
   - pwn/file-structs
 ---
 # Description
-Overwriting the standard file descriptor of `_IO_2_1_stdout_` allows the attacker to gain an **arbitrary write**.
+Overwriting the standard file descriptor of `_IO_2_1_stdout_` allows the attacker to gain an **arbitrary read**.
 # Notes
 - `_IO_2_1_stdout_` is located in the anon section after [[LIBC]]
 - `fp.read_base`, `fp.read_ptr`, etc. are all set to the same value (except `fp.buf_end`)

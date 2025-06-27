@@ -1,6 +1,5 @@
 ---
 tags:
-  - pwn
   - pwn/nx-dep
   - pwn/technique
 ---

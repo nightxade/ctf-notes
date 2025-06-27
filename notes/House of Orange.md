@@ -1,9 +1,8 @@
 ---
 tags:
-  - pwn
   - pwn/technique
   - pwn/heap
-  - pwn/glibc-2-26
+  - pwn/patch/glibc-2-26
 ---
 > [!todo]
 

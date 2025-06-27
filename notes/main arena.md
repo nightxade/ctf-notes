@@ -1,6 +1,5 @@
 ---
 tags:
-  - pwn
   - pwn/heap
   - pwn/code
 ---

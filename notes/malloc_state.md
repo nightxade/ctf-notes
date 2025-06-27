@@ -1,12 +1,13 @@
 ---
 tags:
-  - pwn
   - pwn/heap
   - pwn/code
 ---
 # Description
 `malloc_state` is a struct for the [[main arena]]. It is defined as the following in *glibc 2.41*:
 ```c
+typedef struct malloc_chunk* mchunkptr;
+
 struct malloc_state
 {
   /* Serialize access.  */
@@ -52,15 +53,25 @@ struct malloc_state
 };
 ```
 [source](https://elixir.bootlin.com/glibc/glibc-2.41/source/malloc/malloc.c#L1814)
+## mutex
+Thread lock for multithreaded access to one arena.
+## flags
+> [!todo]
 ## fastbinsY
-Array that stores the addresses of the first chunk in each [[free()#Bins#fastbin|fastbin]].
+Array that stores the addresses of the first chunk in each [[bins#fastbin|fastbin]].
 ## top
 [[top chunk]]
 ## last_remainder
 [[last remainder chunk]]
 ## bins
 bin\[0\] = N/A
-bin\[1\] = [[free()#Bins#unsorted bin|unsorted bin]]
-bin\[2:64\] = [[free()#Bins#small bin|small bin]]
-bin\[64:127\] = [[free()#Bins#large bin|large bin]]
+bin\[1\] = [[bins#unsorted bin|unsorted bin]]
+bin\[2:64\] = [[bins#small bin|small bin]]
+bin\[64:127\] = [[bins#large bin|large bin]]
 [source](https://azeria-labs.com/heap-exploitation-part-2-glibc-heap-free-bins/)
+
+![[malloc_state_bins.png|750]]
+## binmap
+> [!todo]
+## next
+Pointer to next arena (forming a linked list of the process's arenas).

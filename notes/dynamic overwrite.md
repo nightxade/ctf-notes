@@ -1,6 +1,5 @@
 ---
 tags:
-  - pwn
   - pwn/technique
 ---
 # Description

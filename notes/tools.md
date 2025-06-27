@@ -1,0 +1,23 @@
+---
+tags:
+  - pwn/tools
+---
+-<!-- rev pwn decompiler symbolic-execution--> [angr](https://github.com/angr/angr): see tags  
+-<!--rev pwn decompiler--> [BinaryNinja](https://binary.ninja/): see tags  
+-<!--rev deobfuscator--> [demovfuscator](https://github.com/leetonidas/demovfuscator): deobfuscator for movfuscated binaries  
+-<!--rev pwn debugger Windows .NET--> [dnSpy](https://github.com/dnSpy/dnSpy): .NET debugger and assembly/code editor (Windows .exe)  
+-<!--rev debugger Go--> [delve](https://github.com/go-delve/delve): Go debugger, useful for showing local variables  
+-<!--rev pwn decompiler--> [Ghidra](https://github.com/NationalSecurityAgency/ghidra): see tags  
+-<!--rev pwn libc--> [libc.rip](https://libc.rip/): find libc version  
+-<!--pwn ROP one-gadget--> [one_gadget](https://github.com/david942j/one_gadget): find one-gadget's  
+-<!--rev pwn general debugger GDB--> [pwndbg](https://github.com/pwndbg/pwndbg): best GDB extension  
+-<!--pwn general--> [pwntools](https://github.com/Gallopsled/pwntools): *the* Python pwning library  
+-<!--rev pyc--> [pycdc, pycdas](https://github.com/zrax/pycdc): pyc decompiler + disassembler, respectively  
+-<!--rev debugger pyc--> [python-snippet-decompiler](https://github.com/extremecoders-re/python-snippet-decompiler): helper for pyc decompiling, especially Python 3.7+  
+-<!--rev pwn emulation--> [qemu](https://www.qemu.org/): emulator for diff architectures, kernel pwn, etc.  
+-<!--rev pwn--> [radare2](https://rada.re/n/): great (hard) debugger  
+-<!--rev stripped Go--> [Redress](https://github.com/goretk/redress): analyze stripped Go binaries  
+-<!--pwn ROP--> [ROPgadget](https://github.com/JonathanSalwan/ROPgadget): ROP gadget finder  
+-<!--pwn ROP--> [ropper](https://github.com/sashs/Ropper): ROP gadget finder (colored)  
+-<!--rev pwn seccomp--> [seccomp-tools](https://github.com/david942j/seccomp-tools): dump seccomp rules  
+-<!--rev pwn cosmetic pwndbg--> [splitmind](https://github.com/jerdna-regeiz/splitmind): split screen pwndbg  

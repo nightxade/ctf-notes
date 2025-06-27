@@ -1,6 +1,5 @@
 ---
 tags:
-  - "#pwn"
   - pwn/full-relro
   - pwn/technique
 ---

@@ -1,6 +1,5 @@
 ---
 tags:
-  - pwn
   - pwn/mitigation
 ---
 # Description

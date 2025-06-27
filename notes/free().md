@@ -1,27 +1,20 @@
 ---
 tags:
-  - pwn
   - pwn/heap
   - pwn/code
 ---
-# Bins
-## tcache
-[[tcache]]
-## fastbin
-[[fastbin]]
-- Freed chunks cannot be merged/coalesced *until* [[malloc_consolidate()]] is called.
-## small bin
-- Freed chunks can be merged/coalesced
-## large bin
-- Freed chunks can be merged/coalesced
-## unsorted bin
-The unsorted bin is a doubly linked list for any chunk size. Chunks that don't go to [[#tcache]] or [[#fastbin]] go to the unsorted bin *first*. Only later, after another call to [[malloc()]] occurs, do the chunks of the unsorted bin get sorted into their respective small and large bins. A chunk in the unsorted bin contains a pointer to the [[main arena]], which is located in the [[LIBC]]. In other words, successfully getting a chunk into the unsorted bin and subsequently reading the data in the chunk is equivalent to **leaking LIBC**. A chunk will be put into the unsorted bin if one of the following conditions are satisfied:
-- A bin of size > <abbr title="0x400">tcache_max</abbr> is allocated.
-- Adjacent chunks are merged/coalesced ([[#small bin]]/[[#large bin]] only).
-- A bin of size > <abbr title="0x58">fastbin_max</abbr> is allocated AND [[#tcache]] is full for that bin size.
-- [[malloc_consolidate()]] is called, resulting in adjacent [[#fastbin]] chunks being merged and placed into the unsorted bin.
-## Other notes about bins
-For information on how the bins are stored in memory, see [[malloc_state#Description#bins|this section of malloc_state]].
-# Special Chunks
-- [[top chunk]]
-- [[last remainder chunk]]
+# Algorithm
+> Note that, in general, "freeing" memory does not actually return it to the operating system for other applications to use. The free() call marks a chunk of memory as "free to be reused" by the application, but from the operating system's point of view, the memory still "belongs" to the application. However, if the top chunk in a heap - the portion adjacent to unmapped memory - becomes large enough, some of that memory may be unmapped and returned to the operating system.
+> 
+> In a nutshell, free works like this:
+> - If there is room in the tcache, store the chunk there and return.
+> - If the chunk is small enough, place it in the appropriate fastbin.
+> - If the chunk was mmap'd, munmap it.
+> - See if this chunk is adjacent to another free chunk and coalesce if it is.
+> - Place the chunk in the unsorted list, unless it's now the "top" chunk.
+> - If the chunk is large enough, coalesce any fastbins and see if the top chunk is large enough to give some memory back to the system. Note that this step might be deferred, for performance reasons, and happen during a malloc or other call. See [[malloc_consolidate()]].
+
+[source](https://sourceware.org/glibc/wiki/MallocInternals)
+# References
+- https://ir0nstone.gitbook.io/notes/binexp/heap/bins
+- https://sourceware.org/glibc/wiki/MallocInternals

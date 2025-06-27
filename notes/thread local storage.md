@@ -1,6 +1,5 @@
 ---
 tags:
-  - pwn
   - bin/elf
 ---
 # Description
