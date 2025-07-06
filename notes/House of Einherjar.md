@@ -7,7 +7,7 @@ tags:
 The **House of Einherjar** is a technique that leverages an [[off-by-one]] overflow on a buffer on the heap (most commonly a *null byte* overflow) to eventually gain an arbitrary chunk allocation.
 
 TL;DR:
-1. We forge a fake freed, doubly-linked chunk
+1. We use the off-by-one overflow to forge a fake freed, doubly-linked chunk
 2. Free an adjacent chunk to coalesce it with our fake chunk
 3. Our coalesced chunk lands in the [[bins#unsorted bin|unsorted bin]] ([[LIBC]] leak)
 4. Perform [[tcache poisoning]] with your new [[overlapping chunks]]

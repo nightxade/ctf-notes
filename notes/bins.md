@@ -26,7 +26,7 @@ tags:
 - Large bins of sizes with variable ranges (e.g., 1st bin is $512-568$ bytes).
 - Each bin is a doubly-linked list, with insertion/deletion occurring at any point in the list.
 - It may be necessary to split a large bin chunk into two chunks when allocating a new chunk (one is desired size, one is remainder).
-- Since it's required to find a best fit within a large bin (since each bin is a range of sizes), large bins are technically two doubly-linked lists, with the second linked list **sorted by size**.
+- **!!!** Since it's required to find a best fit within a large bin (since each bin is a range of sizes), large bins are technically two doubly-linked lists, with the second linked list **sorted by size** in *descending order*. This doubly-linked list is maintained by the pointers `fd_nextsize` and `bk_nextsize`, and involves the **first chunk** of every size. It may help to sometimes think of the large bin as a "nested doubly-linked list," with chunks of the same size collectively acting as a single node in the parent doubly-linked list (sorted-by-size).
 - Freed chunks are merged/coalesced with adjacent small/large bin chunks whenever they are added to this bin
 - The first and last chunk in each large bin contain pointers to the [[main arena]] (since it is a doubly-linked list), which is located in the [[LIBC]]. In other words, successfully getting a chunk into the unsorted bin and subsequently reading the data in the chunk is equivalent to **leaking libc**. %% #pwn/libc-leak %%
 ![[largebin_nextsize.png|750]]
