@@ -88,11 +88,11 @@ This analysis will assume that we have a *null byte* overflow and:
 	for (int i = 0; i < 7; i++) {
 		malloc(0xf8);
 	}
-	
-	malloc(0x18); // malloc once more to ensure no coalescing with top chunk
+
+	// no need to malloc again to prevent coalescing because chunks in tcache don't coalesce :)
 	
 	for (int i = 0; i < 7; i++) {
-		malloc(0xf8);
+		free(0xf8);
 	}
 	```
 8. Free chunk `c`, triggering consolidation with the fake chunk since chunk `c`'s `PREV_INUSE` flag is `0`, causing `free()` to think the previous chunk can be consolidated.
