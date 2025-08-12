@@ -32,7 +32,7 @@ This analysis will assume that we have a *null byte* overflow and:
 - `sz_c = 0xf8`
 1. Allocate chunk `a`
    ```c
-	inptr_t a = malloc(0x38); // real size of 0x40
+	intptr_t a = malloc(0x38); // real size of 0x40
 	```
 2. Create the fake chunk in the data section of chunk `a` (i.e., fake chunk's header will be right below chunk `a`).
    ```c
@@ -44,11 +44,11 @@ This analysis will assume that we have a *null byte* overflow and:
 	Note that we need `a->fd->bk == a` and `a->bk->fd == a`, thus `a->fd = a->bk = a` works!
 3. Allocate chunk `b`. This will be the overlapping chunk with our fake chunk.
    ```c
-	inptr_t b = malloc(0x28); // real size of 0x30
+	intptr_t b = malloc(0x28); // real size of 0x30
 	```
 4. Allocate chunk `c`.
    ```c
-	inptr_t c = malloc(0xf8); // real size of 0x100
+	intptr_t c = malloc(0xf8); // real size of 0x100
 	```
 	The heap structure now looks like this:
 	```
