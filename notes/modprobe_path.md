@@ -199,6 +199,7 @@ This [patch](https://web.git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.
  /* binfmt handlers will call back into begin_new_exec() on success. */
 ```
 # Attack (post v6.14-rc1)
+This patch was added in **late 2024** and later released in **early 2025**.
 ## Prerequisites (same)
 - Arbitrary write primitive
 - Address of `modprobe_path` (requires leak if [[KASLR]] is enabled)
