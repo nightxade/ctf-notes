@@ -5,7 +5,7 @@ tags:
   - pwn/patch/glibc-2-32
 ---
 # Description
-Safe linking was a protection introduced in **GLIBC 2.32** to make corrupting the singly-linked lists, i.e. [[bins#tcache|tcache]] and [[bins#fastbin|fastbin]]. Essentially, it mangles the `chunk->next` pointer of each freed chunk using a heap address, forcing an attacker to acquire a heap leak first to effectively corrupt tcache/fastbin. It is performed via the [`PROTECT_PTR` macro](https://elixir.bootlin.com/glibc/glibc-2.41/source/malloc/malloc.c#L329), and the corresponding `REVEAL_PTR` macro just reverses safe linking (thus demangling/recovering the pointer).
+Safe linking was a protection introduced in **GLIBC 2.32** to make corrupting the singly-linked lists, i.e. [[bins#tcache|tcache]] and [[bins#fastbin|fastbin]], more difficult. Essentially, it mangles the `chunk->next` pointer of each freed chunk using a heap address, forcing an attacker to acquire a heap leak first to effectively corrupt tcache/fastbin. It is performed via the [`PROTECT_PTR` macro](https://elixir.bootlin.com/glibc/glibc-2.41/source/malloc/malloc.c#L329), and the corresponding `REVEAL_PTR` macro just reverses safe linking (thus demangling/recovering the pointer).
 ```c
 /* Safe-Linking:
    Use randomness from ASLR (mmap_base) to protect single-linked lists
